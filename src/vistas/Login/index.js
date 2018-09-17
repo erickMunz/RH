@@ -1,13 +1,10 @@
 import React from "react";
 import FormLog from "../form/login";
-
-
-
+import Proptypes from 'prop-types';
+import {connect} from 'react-redux';
+import {login} from "../../actions/auth";
 class Login extends React.Component {
-    submit = data =>{
-        console.log("submit");
-        console.log(data);
-    }
+    submit = data => this.props.login(data).then(() => this.props.history.push("/"));
     render(){
         return(
         <div>
@@ -17,5 +14,11 @@ class Login extends React.Component {
         );
     }
 }
+Login.propTypes = {
+    history: Proptypes.shape({
+        push: Proptypes.func.isRequired
+    }).isRequired,
+    login:Proptypes.func.isRequired
+};
 
-export default Login;
+export default connect(null,{login})(Login);
