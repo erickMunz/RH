@@ -1,5 +1,5 @@
 import React from "react";
-import {Form, Button} from "semantic-ui-react";
+import {Form, Button, Container} from "semantic-ui-react";
 import Validator from "validator";
 import MensError from "../../mensajes/errores";
 import Proptypes from "prop-types";
@@ -38,6 +38,7 @@ class FormLog extends React.Component {
     render(){
         const {data, errores} = this.state;
         return (
+            <Container>
             <Form onSubmit={this.onSubmit}>
                 <Form.Field error={errores.correo}>
                     <label htmlFor="correo">Email</label>
@@ -51,6 +52,7 @@ class FormLog extends React.Component {
                 </Form.Field>
                 <Button primary>Login</Button>
             </Form>
+            </Container>
         );
     }
 }
